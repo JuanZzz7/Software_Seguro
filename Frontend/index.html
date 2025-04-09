@@ -17,12 +17,34 @@
             <input type="text" id="loginUsername" required>
             <label for="loginPassword">Contraseña:</label>
             <input type="password" id="loginPassword" required>
+            <button onclick="mostrarPopupRegistro()">Registrar Usuario</button>
             <button type="submit">Entrar</button>
             <button type="button" id="closePopup">Cerrar</button>
         </form>
         <div id="authResult"></div>
     </div>
-    <script src="Login.js"></script>
+    <script src="C:\Users\PERSONAL\Desktop\Trabajo DS\Backend\Login.js"></script>
+
+    <div id="popupRegistro" class="popup">
+        <h2>Registro de Usuario</h2>
+        <input type="text" id="nuevoUsuario" placeholder="Nombre de usuario">
+        <input type="password" id="nuevaContrasena" placeholder="Contraseña">
+        <button onclick="registrarUsuario()">Registrar</button>
+        <button onclick="cerrarPopupRegistro()">Cancelar</button>
+    </div>
+
+    <script src="C:\Users\PERSONAL\Desktop\Trabajo DS\Netlify\Functions\.netlify\Registro.js"></script>
+
+    <script>
+        window.onload = function () {
+          document.getElementById("loginPopup").classList.add("active");
+        }
+      </script>
+      
+    <div id="usuarioActivoBox" style="text-align: right; margin: 10px; display: none;">
+        <strong>Usuario actual:</strong> <span id="usuarioActual"></span>
+        <button onclick="cerrarSesion()" style="margin-left: 10px;">Cerrar Sesión</button>
+    </div>
 
     <div class="container">
         <h1>Convertidor de Unidades</h1>
@@ -52,7 +74,7 @@
         <div class="result" id="result"></div>
     </div>
 
-    <script src="Script 1.js"></script>
+    <script src="C:\Users\PERSONAL\Desktop\Trabajo DS\Backend\Script 1.js"></script>
     
 </body>
 </html>
