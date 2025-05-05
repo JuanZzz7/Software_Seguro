@@ -82,7 +82,14 @@ function convert() {
 if (usuario) {
     const historialKey = `historial_${usuario}`;
     const historial = JSON.parse(localStorage.getItem(historialKey)) || [];
-    historial.push(`${valor} ${unidadDesde} → ${resultado} ${unidadHasta}`);
+    historial.push(`${value} ${unitFrom} → ${result} ${unitTo}`);
     localStorage.setItem(historialKey, JSON.stringify(historial));
+}
+ function borrarHistorial() {
+    const usuario = sessionStorage.getItem("usuarioActivo");
+    if (!usuario) return;
+
+    localStorage.removeItem("historial_" + usuario);
+    mostrarHistorial(usuario);
 }
 }
