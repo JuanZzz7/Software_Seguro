@@ -78,4 +78,11 @@ function convert() {
     }
 
     document.getElementById('result').innerText = `Resultado: ${result} ${unitTo}`;
+    const usuario = localStorage.getItem("usuarioActivo");
+if (usuario) {
+    const historialKey = `historial_${usuario}`;
+    const historial = JSON.parse(localStorage.getItem(historialKey)) || [];
+    historial.push(`${valor} ${unidadDesde} → ${resultado} ${unidadHasta}`);
+    localStorage.setItem(historialKey, JSON.stringify(historial));
+}
 }
