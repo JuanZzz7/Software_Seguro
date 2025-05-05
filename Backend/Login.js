@@ -18,7 +18,8 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     
         // Mostrar el nombre
         mostrarUsuarioActivo();
-    
+        cargarHistorialPerfil(); // esto muestra el historial del usuario
+
         // Ocultar popup
         document.getElementById("loginPopup").classList.remove("active");
     } else {
@@ -48,6 +49,27 @@ function cerrarSesion() {
     localStorage.removeItem("usuarioActivo");
     document.getElementById("usuarioActivoBox").style.display = "none";
     document.getElementById("loginPopup").classList.add("active");
+}
+function cargarHistorialPerfil() {
+    const usuario = localStorage.getItem("usuarioActivo");
+    if (usuario) {
+        const historial = JSON.parse(localStorage.getItem(`historial_${usuario}`)) || [];
+        const lista = document.getElementById("listaHistorial");
+        lista.innerHTML = "";
+        historial.forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            lista.appendChild(li);
+        });
+        document.getElementById("historialPerfil").style.display = "block";
+    }
+}
+function borrarHistorial() {
+    const usuario = localStorage.getItem("usuarioActivo");
+    if (usuario) {
+        localStorage.removeItem(`historial_${usuario}`);
+        cargarHistorialPerfil(); // actualiza la vista
+    }
 }
 
 window.onload = function () {
