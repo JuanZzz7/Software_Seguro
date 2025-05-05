@@ -9,7 +9,8 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     const resultado = document.getElementById("authResult");
 
     if (usuarios[usuario] && usuarios[usuario] === contrasena) {
-        resultado.innerText = 'Inicio de sesión exitoso. Bienvenido, ${usuario}.';
+       resultado.innerText = `Inicio de sesión exitoso. Bienvenido, ${usuario}.`;
+
         resultado.style.color = "green";
         
         // Guardar el usuario activo
